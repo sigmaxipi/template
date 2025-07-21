@@ -1,0 +1,45 @@
+{
+  "tasks": {
+    "setup": "deno install",
+    "clean": "rm -rf node_modules client/dist client/.vite",
+    "dev": {
+      "command": "./runDenoDevTask.sh",
+      "dependencies": [
+        "setup"
+      ]
+    },
+    "build": {
+      "command": "deno run -A npm:vite build client",
+      "dependencies": [
+        "setup"
+      ]
+    },
+    "serve": {
+      "command": "deno run --allow-net --allow-read --allow-env server/main.ts",
+      "dependencies": [
+        "build"
+      ]
+    },
+    "deploy": {
+      "command": "deployctl deploy --entrypoint server/main.ts --prod --project=sxp-template --token=$DENO_DEPLOY_TOKEN",
+      "dependencies": [
+        "build"
+      ]
+    }
+  },
+  "imports": {
+    "@react": "npm:react@^18.3.1",
+    "@react-dom": "npm:react-dom@^18.3.1",
+    "@vite": "npm:vite@^6.3.5",
+    "@vitejs/plugin-react": "npm:@vitejs/plugin-react@^4.3.2"
+  },
+  "nodeModulesDir": "auto",
+  "deploy": {
+    "project": "dd4c430a-1a0c-4a31-843d-3527e8772352",
+    "exclude": [
+      "**/node_modules"
+    ],
+    "include": [],
+    "entrypoint": "server/main.ts"
+  }
+}
