@@ -3,7 +3,7 @@
     "setup": "deno install",
     "clean": "rm -rf node_modules client/dist client/.vite",
     "dev": {
-      "command": "./runDenoDevTask.sh",
+      "command": "bash runDenoDevTask.sh",
       "dependencies": [
         "setup"
       ]

@@ -6,7 +6,7 @@ export class ViteServer {
 
   constructor(config: { host?: string, port?: number } = {}) {
     this.config = {
-        host: config.host || 'm.sxp.me',
+        host: config.host || 'localhost',
         port: config.port || 5173,
     };
   }
